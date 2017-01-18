@@ -1,0 +1,39 @@
+#[ PYTHON ]
+*.pyc
+*.*~
+
+#[ DJANGO ]
+media/
+assets/
+*.log
+logs/
+
+#[ VIRTUAL ENVIRONMENT ]
+venv
+
+#[ ECLIPSE ]
+.project
+.settings
+.pydevproject
+
+#[ ENVIRONMENT SETTINGS ]
+development/
+development.py
+
+#[ PROJECT ]
+cachedb/
+Interests/
+
+#[ OPERATING SYSTEM ]
+.DS_Store
+
+#[ CELERY ]
+worker.pid
+celerybeat.pid
+celerybeat-schedule
+
+#[ DATABASE ]
+*.gz
+
+#[MISC]
+*.swp
