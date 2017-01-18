@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes.apps.account',
     'notes.apps.note',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,24 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#-------------------------------------------------------------------------------
+#  REST SETTINGS
+#-------------------------------------------------------------------------------
+REST_FRAMEWORK = {
+                      
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'PAGINATE_BY_PARAM' : 'page_size',
+    'MAX_PAGE_SIZE': 300,
+    'PAGE_SIZE': 12
+}
