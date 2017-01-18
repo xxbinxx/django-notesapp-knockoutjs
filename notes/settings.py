@@ -19,7 +19,7 @@ import os
 # PROJECT DIRECTORIES
 #-------------------------------------------------------------------------------
 BASE_DIR = \
-os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 FILES_DIR = os.path.join(BASE_DIR, 'files')
 
@@ -37,17 +37,18 @@ FIXTURE_DIRS = [FIXTURES_ROOT, ]
 
 STATICFILES_DIRS = [STATIC_DIR, ]
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ir$v-4l836a2bz219jwd#h+0vrp0%4o7^4u6^-2@c%b$i&6lv)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+ROOT_URLCONF = 'notes.urls'
+BASE_URL = ''
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -58,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'notes.apps.account',
+    'notes.apps.note',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +78,7 @@ ROOT_URLCONF = 'notes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,17 +92,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'notes.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -137,6 +129,9 @@ USE_TZ = True
 #------------------------------------------------------------------------------
 # DATABASE SETTINGS
 #------------------------------------------------------------------------------
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
