@@ -15,4 +15,3 @@ class ViewAPINote(ModelViewSet):
      
     serializer_class = SerializerNote
     queryset = ModelNote.objects.all()
-    
