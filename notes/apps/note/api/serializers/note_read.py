@@ -5,9 +5,9 @@ from notes.apps.note.models.note import ModelNote
 
 
 #-------------------------------------------------------------------------------
-# SerializerNote
+# SerializerNoteRead
 #-------------------------------------------------------------------------------
-class SerializerNote(serializers.ModelSerializer):
+class SerializerNoteRead(serializers.ModelSerializer):
     
 #     Author = SerializerUser()
     Author = serializers.SerializerMethodField()

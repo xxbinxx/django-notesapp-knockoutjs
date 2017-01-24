@@ -25,25 +25,25 @@
                         <br style="clear: both">
                         <div class="form-group">
                             <label class="control-label" >Name</label>
-                            <input type="text" class="form-control" data-bind="value: notes.note.title" placeholder="Name">
+                            <input type="text" class="form-control" data-bind="value: note.title" placeholder="Name">
                             <p class="help-block">Enter your title</p>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" >Content</label>
-                            <textarea rows="10" class="form-control" placeholder="Enter your content here" data-bind="value: notes.note.content"> </textarea>
+                            <textarea rows="10" class="form-control" placeholder="Enter your content here" data-bind="value: note.content"> </textarea>
                             <p class="help-block">Enter your content </p>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label" >author</label>
-                            <!-- <input type="text" class="form-control" placeholder="author" data-bind="value: notes.note.author">
+                            <label class="control-label" >Author</label>
+                            <!-- <input type="text" class="form-control" placeholder="author" data-bind="value: notes.author">
                             <p class="help-block">Enter author's name</p> -->
 
-                            <select data-bind="options: notes.authors, value: notes.selectedAuthor "></select>
+                            <select data-bind="options: authors, value: selectedAuthor "></select>
                         </div>
 
-                        <button type="button" id="submit" title="submit" class="btn btn-primary pull-right" data-bind="click: notes.addNote">Save note</button>
+                        <button type="button" id="submit" title="submit" class="btn btn-primary pull-right" data-bind="click: addNote">Save note</button>
                     </form>
                 </div>
             </div>
@@ -51,11 +51,12 @@
         <div class="col-md-7">
             <div class="well">
             <br><br>
-                <h5>Total items: <span data-bind="text: notes.initialData().length"></span></h5>
+                <h5>Total items: <span data-bind="text: notes().length"></span></h5>
 
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Content</th>
                             <th>Author</th>
@@ -63,19 +64,18 @@
                         </tr>
                     </thead>
 
-                    <!-- ko if: notes.initialData().length > 0 -->
-                    <tbody data-bind="foreach: notes.initialData">
+                    <!-- ko if: notes().length > 0 -->
+                    <tbody data-bind="foreach: notes">
                         <tr>
+                            <td data-bind="text: id"></td>
                             <td data-bind="text: title"></td>
                             <td data-bind="text: content"></td>
                             <td data-bind="text: author"></td>
-                            <td> <button type="button" class="btn btn-primary pull-right" data-bind="click: notes.removeNote">Delete</button></td>
+                            <td><a data-bind="click: $parent.removeNote" href="#">Delete</a></td>
                         </tr>
                     </tbody>
                     <!-- /ko -->​
-
-
-                        <td colspan=4  data-bind="if: notes.initialData().length == 0"> <h3>No notes available</h3></td>
+                        <td colspan=4  data-bind="if: notes().length == 0"> <h3>No notes available</h3></td>
 
                 </table>
             </div>
