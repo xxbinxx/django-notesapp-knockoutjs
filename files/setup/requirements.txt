@@ -1,6 +1,6 @@
 Django==1.10
 django-autoslug==1.9.3
-djangorestframework==3.5.3
+djangorestframework==3.11.2
 olefile==0.44
 Pillow==4.0.0
 psycopg2==2.6.2
